@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="common/base :: head"></head>
+
+<body>
+<nav th:replace="common/base :: navbar"></nav>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="text-center">
+            <h1>
+                Welcome to Tic Tac Toe
+            </h1>
+            <h3 sec:authorize="!hasAnyAuthority('USER')">
+                You have not <strong>LOGGED IN</strong>
+                <a th:href="@{/login}">Log in</a>
+            </h3>
+
+            <h3 sec:authorize="hasAnyAuthority('USER')">
+                <span th:text="${user.firstName}"></span>
+                <span th:text="${user.lastName}"></span>
+                <a th:href="@{/logout}">Log out</a>
+            </h3>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="common/base :: jslinks"></div>
+
+</body>
+
+</html>

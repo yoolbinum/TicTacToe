@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="common/base :: head"></head>
+
+<body>
+<div id="wrapper">
+
+    <nav th:replace="common/base :: topNavbar"></nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div th:replace="common/base :: navBar"></div>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-warning pull-right"></span>
+                            <h5>Credit Score</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins" th:text="${profile.credit_score}"></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-success pull-right">Monthly</span>
+                            <h5>Income</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins" th:text="${profile.monthly_income}"></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-success pull-right">Monthly</span>
+                            <h5>Spending</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins" th:text="${profile.monthly_spent}"></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-info pull-right">Monthly</span>
+                            <h5>Credit Line</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins" th:text="${profile.credit_line}"></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-info pull-right">Monthly</span>
+                            <h5>Available Credit</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins" th:text="${profile.available_credit}"></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <a class="btn btn-info " type="button" th:href="@{/profile/update}"><i class="fa fa-paste"></i> Edit</a>
+            </div>
+        </div>
+        <div th:replace="common/base :: foot"></div>
+
+    </div>
+</div>
+
+
+<div th:replace="common/base :: jslinks"></div>
+
+</body>
+
+</html>
