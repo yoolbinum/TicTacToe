@@ -14,13 +14,16 @@
                 Welcome to Tic Tac Toe
             </h1>
             <h3 sec:authorize="!hasAnyAuthority('USER')">
-                You have not <strong>LOGGED IN</strong>
+                <p>You have not <strong>LOGGED IN</strong></p>
                 <a th:href="@{/login}">Log in</a>
             </h3>
 
             <h3 sec:authorize="hasAnyAuthority('USER')">
-                <span th:text="${user.username}"></span>
+                <div th:text="${user.username}"></div>
                 <a th:href="@{/logout}">Log out</a>
+                <form th:action="@{/games/create}" th:object="${game}" method="post">
+                    <button type="submit" class="btn btn-primary">Create New Game</button>
+                </form>
             </h3>
         </div>
     </div>

@@ -66,4 +66,8 @@ public class AppUser {
         this.roles.add(role);
     }
 
+    public void addGame(Game game){
+        this.games.add(game);
+    }
+
 }

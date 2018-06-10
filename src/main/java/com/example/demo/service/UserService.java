@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.AppUser;
+import com.example.demo.model.Game;
 import com.example.demo.model.Role;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
@@ -27,8 +28,10 @@ public class UserService {
 
     public void saveNewUser(AppUser user) {
         HashSet<Role> hash = new HashSet<>();
+        HashSet<Game> game = new HashSet<>();
         hash.add(roleRepository.findByRole("USER"));
         user.setRoles(hash);
+        user.setGames(game);
         userRepository.save(user);
     }
 
@@ -39,6 +42,10 @@ public class UserService {
     public void addRole(AppUser user, String roleName) {
         Role role = roleRepository.findByRole(roleName);
         user.addRole(role);
+    }
+
+    public void addGame(Game game, AppUser user){
+        user.addGame(game);
     }
 
 

@@ -12,7 +12,7 @@ public class Game {
     @ManyToMany(mappedBy = "games")
     private Set<AppUser> players;
 
-    private int[][] board = new int[3][3];
+    private int[][] board;
 
     private boolean ended;
 
@@ -66,5 +66,9 @@ public class Game {
 
     public void setIn(boolean in) {
         this.in = in;
+    }
+
+    public void addPlayer(AppUser player){
+        this.players.add(player);
     }
 }
