@@ -18,7 +18,13 @@
                 <a class="nav-link" th:href="@{/}">Main</a>
             </li>
             <li class="nav-item" sec:authorize="hasAnyAuthority('USER')">
-                <a class="nav-link" th:href="@{/profile/detail}">Profile</a>
+                <a class="nav-link" th:href="@{/games/open}">Open Game</a>
+            </li>
+            <li class="nav-item" sec:authorize="hasAnyAuthority('USER')">
+                <a class="nav-link" th:href="@{/games/in}">In Game</a>
+            </li>
+            <li class="nav-item" sec:authorize="hasAnyAuthority('USER')">
+                <a class="nav-link" th:href="@{/games/end}">Ended Game</a>
             </li>
         </ul>
     </div>

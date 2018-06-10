@@ -14,16 +14,23 @@ public class AppUser {
 
     private String username;
 
-    private String firstName;
-
-    private String lastName;
-
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Game> games;
 
 
     public long getId() {
         return id;
+    }
+
+    public Set<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(Set<Game> games) {
+        this.games = games;
     }
 
     public void setId(long id) {
@@ -44,23 +51,6 @@ public class AppUser {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public Set<Role> getRoles() {

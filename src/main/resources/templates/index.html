@@ -19,8 +19,7 @@
             </h3>
 
             <h3 sec:authorize="hasAnyAuthority('USER')">
-                <span th:text="${user.firstName}"></span>
-                <span th:text="${user.lastName}"></span>
+                <span th:text="${user.username}"></span>
                 <a th:href="@{/logout}">Log out</a>
             </h3>
         </div>

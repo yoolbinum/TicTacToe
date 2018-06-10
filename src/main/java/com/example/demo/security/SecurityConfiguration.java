@@ -30,6 +30,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     };
 
     private static final String[] USER_MATCHERS = {
+            "/games/open",
+            "/games/in",
+            "/games/close"
     };
 
 
@@ -44,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers(PUBLIC_MATCHERS).permitAll()
-                .antMatchers(USER_MATCHERS).hasAuthority("USER")
+                .antMatchers(USER_MATCHERS).hasAnyAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
