@@ -50,13 +50,6 @@ public class GameController {
         return  gameDir + "inList";
     }
 
-    @GetMapping("/end")
-    public String endedGames(Model model){
-        model.addAttribute("games", gameService.getCloseGames());
-
-        return  gameDir + "list";
-    }
-
     @PostMapping("/create")
     public String createGame(Authentication auth){
         AppUser user = userService.findByUsername(auth.getName());

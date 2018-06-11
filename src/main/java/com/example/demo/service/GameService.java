@@ -52,9 +52,6 @@ public class GameService {
         return gameRepository.findAllByPlayersContaining(player);
     }
 
-    public Set<Game> getCloseGames(){
-        return gameRepository.findAllByEndedIsTrue();
-    }
 
     public void saveGame(Game game) {
         gameRepository.save(game);

@@ -9,5 +9,4 @@ import java.util.Set;
 public interface GameRepository extends CrudRepository<Game, Long>{
     Set<Game> findAllByOpenIsTrueAndPlayersNotContaining(AppUser user);
     Set<Game> findAllByPlayersContaining(AppUser user);
-    Set<Game> findAllByEndedIsTrue();
 }

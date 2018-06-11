@@ -30,9 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     };
 
     private static final String[] USER_MATCHERS = {
-            "/games/open",
-            "/games/in",
-            "/games/close"
+            "/games/**",
     };
 
 
