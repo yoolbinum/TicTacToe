@@ -2,14 +2,14 @@ package com.example.demo.service;
 
 import com.example.demo.model.AppUser;
 import com.example.demo.model.Game;
+import com.example.demo.model.Tile;
 import com.example.demo.repository.GameRepository;
+import com.example.demo.repository.TileRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class GameService {
@@ -17,34 +17,39 @@ public class GameService {
 
     final UserRepository userRepository;
 
+    final TileService tileService;
+
     @Autowired
-    public GameService(GameRepository gameRepository, UserRepository userRepository) {
+    public GameService(GameRepository gameRepository, UserRepository userRepository, TileService tileService) {
         this.gameRepository = gameRepository;
         this.userRepository = userRepository;
+        this.tileService = tileService;
     }
 
-    public Game createNewGame(){
+    public Game createNewGame(AppUser user){
         Game game = new Game();
-
-        int[][] initializedBoard = new int[3][3];
-        for(int[] row: initializedBoard){
-            Arrays.fill(row, -1);
+        List<Tile> tileList = new ArrayList<>();
+        for(int i = 1; i <= 9; i++){
+            Tile tile = tileService.createNewTile(i);
+            tileService.saveTile(tile);
+            tileList.add(tile);
         }
-        game.setBoard(initializedBoard);
+
+        game.setBoard(tileList);
         game.setEnded(false);
-        game.setIn(false);
         game.setOpen(true);
         game.setPlayers(new HashSet<>());
+        game.setHostUsername(user.getUsername());
 
         return game;
     }
 
-    public Set<Game> getOpenGames(){
-        return gameRepository.findAllByOpenIsTrue();
+    public Set<Game> getOpenGames(AppUser player){
+        return gameRepository.findAllByOpenIsTrueAndPlayersNotContaining(player);
     }
 
-    public Set<Game> getInGames(){
-        return gameRepository.findAllByInIsTrue();
+    public Set<Game> getInGames(AppUser player){
+        return gameRepository.findAllByPlayersContaining(player);
     }
 
     public Set<Game> getCloseGames(){
@@ -53,6 +58,14 @@ public class GameService {
 
     public void saveGame(Game game) {
         gameRepository.save(game);
+    }
+
+    public Game findOne(long id){
+        return gameRepository.findOne(id);
+    }
+
+    public Set<AppUser> getPlayers(Game game){
+        return game.getPlayers();
     }
 
 }

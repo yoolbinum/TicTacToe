@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="common/base :: head"></head>
+
+<body>
+<nav th:replace="common/base :: navbar"></nav>
+
+<a class="btn btn-info " type="button" th:href="@{/games/updateTile/{id}(id=${tile1.id})}" th:text="${tile1.value}"></a>
+<a class="btn btn-info " type="button" th:href="@{/games/updateTile/{id}(id=${tile2.id})}" th:text="${tile2.value}"></a>
+<a class="btn btn-info " type="button" th:href="@{/games/updateTile/{id}(id=${tile3.id})}" th:text="${tile3.value}"></a><br/>
+<a class="btn btn-info " type="button" th:href="@{/games/updateTile/{id}(id=${tile4.id})}" th:text="${tile4.value}"></a>
+<a class="btn btn-info " type="button" th:href="@{/games/updateTile/{id}(id=${tile5.id})}" th:text="${tile5.value}"></a>
+<a class="btn btn-info " type="button" th:href="@{/games/updateTile/{id}(id=${tile6.id})}" th:text="${tile6.value}"></a><br/>
+<a class="btn btn-info " type="button" th:href="@{/games/updateTile/{id}(id=${tile7.id})}" th:text="${tile7.value}"></a>
+<a class="btn btn-info " type="button" th:href="@{/games/updateTile/{id}(id=${tile8.id})}" th:text="${tile8.value}"></a>
+<a class="btn btn-info " type="button" th:href="@{/games/updateTile/{id}(id=${tile9.id})}" th:text="${tile9.value}"></a><br/>
+
+
+
+<div th:replace="common/base :: jslinks"></div>
+
+</body>
+
+</html>

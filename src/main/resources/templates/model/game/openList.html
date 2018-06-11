@@ -12,6 +12,7 @@
     <thead>
 
     <th>Id</th>
+    <th>Host</th>
     <th>Action</th>
 
     </thead>
@@ -20,9 +21,9 @@
 
     <tr th:each="game : ${games}">
         <td th:text="${game.id}"></td>
-
+        <td th:text="${game.hostUsername}"></td>
         <td>
-            <a class="btn btn-round btn-fill btn-warning">Join</a>
+            <a th:href="@{/games/join/{id}(id=${game.id})}" class="btn btn-round btn-fill btn-warning">Join</a>
         </td>
     </tr>
     </tbody>

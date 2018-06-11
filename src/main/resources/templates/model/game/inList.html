@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="common/base :: head"></head>
+
+<body>
+<nav th:replace="common/base :: navbar"></nav>
+
+<table class="table">
+    <thead>
+
+    <th>Id</th>
+    <th>Host</th>
+    <th>Action</th>
+
+    </thead>
+
+    <tbody>
+
+    <tr th:each="game : ${games}">
+        <td th:text="${game.id}"></td>
+        <td th:text="${game.hostUsername}"></td>
+        <td>
+            <a th:href="@{/games/play/{id}(id=${game.id})}" class="btn btn-round btn-fill btn-warning">Play</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:replace="common/base :: jslinks"></div>
+
+</body>
+
+</html>
